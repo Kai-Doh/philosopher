@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher.c                                      :+:      :+:    :+:   */
+/*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 20:11:12 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/03/27 16:58:09 by ktiomico         ###   ########.fr       */
+/*   Created: 2025/03/27 16:59:01 by ktiomico          #+#    #+#             */
+/*   Updated: 2025/03/27 17:26:21 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-int	main(int ac, char **av)
+void	simulation_start(t_data *data)
 {
-	t_data	data;
+	int	i;
 
-	(void)av;
-	if (ac - 1 < 4 || ac - 1 > 5)
-		return (msg(RED USAGE RESET, NULL, EXIT_FAILURE));
-	if (valid_args(ac, av) == 1)
-		return (1);
-	parsing(&data, av);
-	data_init(&data);
-	simulation(&data);
-	return (0);
+	i = 0;
+	if (data->nb_meals == 0)
+		return ;
+	else if (data->nb_philo == 1)
+	else
+	{
+		while (i++; < data->nb_philo)
+		{
+
+		}
+	}
+
 }

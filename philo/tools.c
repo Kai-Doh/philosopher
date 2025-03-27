@@ -6,7 +6,7 @@
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 18:56:58 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/03/27 15:37:00 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:09:53 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,3 @@ void	*malloc_check(size_t size)
 	return (ptr);
 }
 
-void	mutex_handling(pthread_mutex_t *mtx, t_state state)
-{
-	if (state == UNLOCK)
-		pthread_mutex_unlock(mtx);
-	else if (state == LOCK)
-		pthread_mutex_lock(mtx);
-	else if (state == INIT)
-		pthread_mutex_init(mtx, NULL);
-	else if (state == DESTROY)
-		pthread_mutex_destroy(mtx);
-	else
-		msg(RED "Error: mutex handling failed\n", NULL, EXIT_FAILURE);
-}

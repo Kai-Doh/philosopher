@@ -17,7 +17,8 @@ SRCS =	philosopher.c\
 		tools.c\
 		checker.c\
 		parsing.c\
-		init.c
+		init.c\
+		handling.c
 
 # Object Files (automatically generated from SRCS)
 OBJS = $(SRCS:.c=.o)
