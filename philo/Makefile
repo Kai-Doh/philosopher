@@ -15,7 +15,9 @@ CFLAGS = -Werror -Wall -Wextra -g -I.
 # Source Files
 SRCS =	philosopher.c\
 		tools.c\
-		checker.c
+		checker.c\
+		parsing.c\
+		init.c
 
 # Object Files (automatically generated from SRCS)
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 20:12:11 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/03/23 20:44:24 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:39:59 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,37 +39,57 @@
 the input should be between 1 and %s philosophers.\n"
 # define ERR_DIGIT "%s invalid input: %s: \
 not a valid unsigned integer between 0 and 2147483647.\n"
+# define ERR_MALLOC "%s error: malloc failed\n"
+
+typedef struct s_philo	t_philo;
+typedef struct s_fork	t_fork;
 
 typedef struct s_data
 {
-	pthread_t		thread;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*write_lock;
-	pthread_mutex_t	*dead_lock;
-	pthread_mutex_t	*meal_lock;
-	size_t			id;
-	size_t			eating;
-	size_t			meals_ate;
-	size_t			time_death;
-	size_t			time_eat;
-	size_t			time_sleep;
-	size_t			meals;
-	size_t			n_philo;
-	size_t			n_time_eat;
-	size_t			*dead;
+	long	nb_philo;
+	long	time_to_die;
+	long	time_to_eat;
+	long	time_to_sleep;
+	long	nb_meals;
+	long	start_simulation;
+	bool	end_simulation;
+	t_philo	*philos;
+	t_fork	*forks;
 }	t_data;
 
-typedef struct s_program
+typedef struct s_fork
 {
-	size_t			dead_flag;
-	pthread_mutex_t	write_lock;
-	pthread_mutex_t	dead_lock;
-	pthread_mutex_t	meal_lock;
-	t_data			*philo;
-}	t_program;
+	pthread_mutex_t	*fork;
+	int				id_fork;
+}	t_fork;
 
-int	msg(char *str, char *detail, int exit_no);
-int	valid_args(int ac, char **av);
+typedef struct s_philo
+{
+	int				id;
+	long			counter;
+	bool			full;
+	long			last_meal;
+	t_fork			*left_fork;
+	t_fork			*right_fork;
+	t_data			*data;
+	pthread_t		thread_id;
+}	t_philo;
 
+typedef enum e_state
+{
+	LOCK,
+	UNLOCK,
+	INIT,
+	DESTROY,
+	CREATE,
+	JOIN,
+	DETACH,
+}	t_state;
+
+int		msg(char *str, char *detail, int exit_no);
+int		valid_args(int ac, char **av);
+long	ft_atoi(char *str);
+void	parsing(t_data *data, char **av);
+void	*malloc_check(size_t size);
+void	data_init(t_data *data);
 #endif

@@ -6,14 +6,13 @@
 /*   By: ktiomico <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 19:08:12 by ktiomico          #+#    #+#             */
-/*   Updated: 2025/03/23 20:55:18 by ktiomico         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:49:02 by ktiomico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
 static int	is_number(char *str);
-static int	ft_atoi(char *str);
 
 int	valid_args(int ac, char **av)
 {
@@ -47,21 +46,4 @@ static int	is_number(char *str)
 		i++;
 	}
 	return (0);
-}
-
-static int	ft_atoi(char *str)
-{
-	unsigned long long int	nb;
-	int						i;
-
-	i = 0;
-	nb = 0;
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
-	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
-	}
-	if (nb > INT_MAX)
-		return (-1);
-	return ((int)nb);
 }
